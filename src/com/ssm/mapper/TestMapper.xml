@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 命名空间路径要与该文件的路径相同 -->
+<mapper namespace="com.ssm.mapper.TestMapper">
+	<!-- id值与同名Mapper接口文件的方法相同，即可实现自动映射，parameterType代表参数类型，resultType代表返回值类型 -->
+	<!-- 根据条件查询 -->
+	<select id="selectById" parameterType="int" resultType="Test">
+		<!-- 对于单参数的情况下，直接通过形参名即可 -->
+		select *
+		from test where id=#{id}
+	</select>
+	<!-- 对于删除，更新和插入返回值类型都是整形，所以就不存在resultType属性 -->
+	<!-- 删除 -->
+	<delete id="deleteByName" parameterType="String">
+		delete from test where
+		name=#{name}
+	</delete>
+	<!-- 更新 -->
+	<delete id="updateById" parameterType="Test">
+		<!-- 对于多参数的情况下，可以直接使用对象携带所有参数，通过对象的属性名获取对应参数 -->
+		update test set
+		name=#{name} where id=#{id}
+	</delete>
+	<!-- 插入 -->
+	<insert id="insertNew" parameterType="Test">
+		<!-- 因为数据库中id为自增字段，所以不需要我们人为指定，SQL语句中使用default即可 -->
+		insert into test
+		values(default,#{name},#{portrait})
+	</insert>
+</mapper>
