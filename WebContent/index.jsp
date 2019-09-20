@@ -15,8 +15,8 @@
 <body>
 	<h1>测试页</h1>
 	<button class="test btn-primary">测试JQuery</button>
-	<hr/>
 	<button onclick="test()" class="btn-info">测试JavaScript</button>
+	<hr/>
 	<p><a href="content">跳转到主页</a></p>
 	<hr/>
 	<p><a href="showAll">查询全部数据</a></p>
